@@ -1,0 +1,58 @@
+{
+  "name": "BorrowLend",
+  "version": "1.0.0",
+  "private": false,
+  "description": "BorrowLend",
+  "homepage": "https://marwin1991.github.io/BorrowLend/",
+  "scripts": {
+    "start": "webpack-dev-server --compress --mode development --open",
+    "startProd": "webpack-dev-server --compress --mode production --open",
+    "build": "webpack --mode production",
+    "transpile": "babel src -d dist --copy-files",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "keywords": [
+    "BorrowLend"
+  ],
+  "author": "Piotr Zmilczak",
+  "devDependencies": {
+    "@babel/cli": "7.4.4",
+    "@babel/core": "7.4.5",
+    "babel-loader": "8.0.6",
+    "@babel/plugin-proposal-class-properties": "7.4.4",
+    "@babel/polyfill": "7.4.4",
+    "@babel/preset-env": "7.4.5",
+    "@babel/preset-react": "7.0.0",
+    "copy-webpack-plugin": "5.0.3",
+    "css-loader": "3.0.0",
+    "file-loader": "4.0.0",
+    "gh-pages": "2.0.1",
+    "html-webpack-plugin": "3.2.0",
+    "react-bootstrap": "^0.32.4",
+    "recursive-readdir": "2.2.2",
+    "style-loader": "0.23.1",
+    "terser": "4.0.0",
+    "terser-webpack-plugin": "1.3.0",
+    "uglifyjs-webpack-plugin": "2.1.3",
+    "webpack": "4.35.0",
+    "webpack-bundle-analyzer": "3.3.2",
+    "webpack-cli": "3.3.4",
+    "webpack-dev-server": "3.7.2"
+  },
+  "dependencies": {
+    "@axetroy/react-download": "1.1.1",
+    "antd": "3.19.7",
+    "axios": "0.19.0",
+    "babel-plugin-wildcard": "5.0.0",
+    "bootstrap": "4.3.1",
+    "jquery": "3.4.1",
+    "popper.js": "1.15.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-load-script": "0.0.6",
+    "react-router": "5.0.1",
+    "react-router-dom": "4.4.0-beta.8",
+    "webpack-visualizer-plugin": "0.1.11"
+  }
+}

@@ -41,7 +41,7 @@ class MainPage extends React.Component {
         this.state.styleMode = "success";
         this.state.color = "#28a745";
         this.state.opositColor = "#dc3545";
-        this.state.index = 1;
+        this.state.index = 0;
         this.forceUpdate()
     }
 
@@ -51,7 +51,7 @@ class MainPage extends React.Component {
         this.state.styleMode = "danger";
         this.state.color = "#dc3545";
         this.state.opositColor = "#28a745";
-        this.state.index = 0;
+        this.state.index = 1;
         this.forceUpdate()
     }
 
@@ -154,9 +154,9 @@ class MainPage extends React.Component {
                                 width: '100%',
                                 margin: 10,
                             }}>
-                                <Item id={1}/>
-                                <Item id={2}/>
-                                <Item id={3}/>
+                                <Item id={1}  color={this.state.color} state="waiting"/>
+                                <Item id={2}  color={this.state.color}/>
+                                <Item id={3}  color={this.state.color} state="overdue"/>
                             </Accordion>
                             </Col>
                             <Col xs={0} sm={2} md={2} style={{
@@ -204,8 +204,10 @@ class MainPage extends React.Component {
                                 width: '100%',
                                 margin: 10,
                             }}>
-                                <Item id={1}/>
-                                <Item id={2}/>
+                                <Item id={1}  color={this.state.opositColor} state="waiting"/>
+                                <Item id={2}  color={this.state.opositColor} state="waiting"/>
+                                <Item id={3}  color={this.state.opositColor}/>
+                                <Item id={4}  color={this.state.opositColor} state="overdue"/>
                             </Accordion>
                             </Col>
                             <Col xs={0} sm={2} md={2} style={{

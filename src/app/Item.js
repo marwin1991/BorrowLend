@@ -21,6 +21,7 @@ class Item extends React.Component {
 
     constructor(props) {
         super(props);
+        console.log(props)
         if(this.props.color !== undefined)
             this.state.color = this.props.color;
         if(this.props.state !== undefined)
@@ -38,6 +39,7 @@ class Item extends React.Component {
 
 
 
+
         if(this.state.state === "done") {
             this.state.icon = "check-circle";
             this.state.iconColor = "green";
@@ -50,6 +52,7 @@ class Item extends React.Component {
             this.state.icon = "clock";
             this.state.iconColor = "grey"
         }
+        console.log(this.state)
     }
 
     render() {
@@ -84,7 +87,7 @@ class Item extends React.Component {
                             </div>
                         </Col>
                         <Col xs={1} sm={1} md={1} lg={1}>
-                            <FontAwesomeIcon icon="check-circle" color="green" size="2x" style={{marginTop: 15}}/>
+                            <FontAwesomeIcon icon={this.state.icon} color={this.state.iconColor} size="2x" style={{marginTop: 15}}/>
                         </Col>
                     </Row>
                 </Accordion.Toggle>

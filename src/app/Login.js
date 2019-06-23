@@ -32,6 +32,7 @@ export default class Login extends Component {
                      margin: "0 auto",
                      maxWidth: "320px",
                  }}>
+                <h1 className="d-flex justify-content-center" style={{paddingBottom:"30px"}}>Sign in</h1>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="email" bsSize="large">
                         <Form.Label>Email</Form.Label>

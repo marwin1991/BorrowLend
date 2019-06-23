@@ -1,9 +1,22 @@
 import React from 'react';
-import MainPage from "./MainPage";
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheckSquare, faCoffee, faUser, faBell, faCog, faSignOutAlt, faChevronRight, faChevronLeft, faCheckCircle, faExclamationCircle, faClock} from '@fortawesome/free-solid-svg-icons'
+import Routes from "./Routes";
+
+import {library} from '@fortawesome/fontawesome-svg-core'
+import {fab} from '@fortawesome/free-brands-svg-icons'
+import {
+    faCheckSquare,
+    faCoffee,
+    faUser,
+    faBell,
+    faCog,
+    faSignOutAlt,
+    faChevronRight,
+    faChevronLeft,
+    faCheckCircle,
+    faExclamationCircle,
+    faClock
+} from '@fortawesome/free-solid-svg-icons'
 
 library.add(fab, faCheckSquare, faCoffee, faUser, faBell, faCog, faSignOutAlt, faChevronRight, faChevronLeft, faCheckCircle, faExclamationCircle, faClock);
 
@@ -11,7 +24,7 @@ library.add(fab, faCheckSquare, faCoffee, faUser, faBell, faCog, faSignOutAlt, f
 const App = () => {
     return (
         <div className="App">
-            <MainPage/>
+            <Routes/>
         </div>
     );
 };

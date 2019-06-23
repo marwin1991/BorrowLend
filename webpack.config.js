@@ -25,7 +25,8 @@ module.exports = {
     target: 'web',
     output: {
         path: path.join(__dirname, "dist"),
-        filename: "bundle.js"
+        filename: "bundle.js",
+        publicPath: '/'
     },
 
     module: {
@@ -52,8 +53,11 @@ module.exports = {
             },
         ]
     },
-    plugins: [htmlPlugin, copyStatic, new BundleAnalyzerPlugin({"openAnalyzer":false, "analyzerMode":"static"}),
+    devServer: {
+        historyApiFallback: true,
+    },
+    plugins: [htmlPlugin, copyStatic, new BundleAnalyzerPlugin({"openAnalyzer": false, "analyzerMode": "static"}),
         new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify('production')
-    }), new Visualizer({"filename":"report.html"})]
+            'process.env.NODE_ENV': JSON.stringify('production')
+        }), new Visualizer({"filename": "report.html"})]
 };

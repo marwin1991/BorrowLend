@@ -173,8 +173,6 @@ class MainPage extends React.Component {
                                 </div>
                             </Col>
                         </Row>
-
-                        {this.state.applicationTile}
                     </Carousel.Item>
 
 
@@ -224,10 +222,9 @@ class MainPage extends React.Component {
                                 </div>
                             </Col>
                         </Row>
-
-                        {this.state.applicationTile}
                     </Carousel.Item>
                 </Carousel>
+
             </div>
         );
     }

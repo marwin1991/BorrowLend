@@ -11,15 +11,20 @@ import Row from "react-bootstrap/es/Row";
 import Col from "react-bootstrap/es/Col";
 import Item from "./Item";
 import Accordion from "react-bootstrap/es/Accordion";
+import Fab from "@material-ui/core/es/Fab/Fab";
+import AddIcon from '@material-ui/icons/Add';
+import Carousel from "react-bootstrap/es/Carousel";
 
 
 class MainPage extends React.Component {
     state = {
         applicationTile: "BorrowLend",
+        index: 0, //0- borrow , 1= lend
         mode: "borrow", //borrow,lend
         styleMode: "success", // borrow=success lend=danger
         color: "#28a745", // borrow = #28a745 lend = #dc3545
         opositColor: "#dc3545",
+        direction: "next",
     };
 
     constructor(props) {
@@ -36,6 +41,7 @@ class MainPage extends React.Component {
         this.state.styleMode = "success";
         this.state.color = "#28a745";
         this.state.opositColor = "#dc3545";
+        this.state.index = 1;
         this.forceUpdate()
     }
 
@@ -45,10 +51,12 @@ class MainPage extends React.Component {
         this.state.styleMode = "danger";
         this.state.color = "#dc3545";
         this.state.opositColor = "#28a745";
+        this.state.index = 0;
         this.forceUpdate()
     }
 
-    toggle() {
+    toggle(e) {
+        this.state.direction = "prev";
         if (this.state.mode === "borrow")
             this.lendButton();
         else
@@ -76,12 +84,11 @@ class MainPage extends React.Component {
                             }}><FontAwesomeIcon icon="bell" size="lg"/></Nav.Link>
                         </Nav>
                         <Nav className="mx-auto" variant="pills" defaultActiveKey="/home">
-                            <Nav.Item style={{display: 'flex', alignItems: 'center', justifyContent: 'center',}}>
-                                <Button onClick={this.borrowButton} variant="success"
-                                        style={{minWidth: 120}}>Borrow</Button>
+                            <Nav.Item as={Button} style={{display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: 120}} onClick={this.borrowButton} variant="success">
+                                Borrow
                             </Nav.Item>
-                            <Nav.Item style={{display: 'flex', alignItems: 'center', justifyContent: 'center',}}>
-                                <Button onClick={this.lendButton} variant="danger" style={{minWidth: 120}}>Lend</Button>
+                            <Nav.Item as={Button} style={{display: 'flex', alignItems: 'center', justifyContent: 'center',  minWidth: 120}} onClick={this.lendButton} variant="danger">
+                                Lend
                             </Nav.Item>
                         </Nav>
                         <Nav>
@@ -94,55 +101,133 @@ class MainPage extends React.Component {
                                 <NavDropdown.Divider/>
                                 <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                             </NavDropdown>
-                            <Nav.Link href="#pricing" style={{
+                        </Nav>
+                    </Navbar.Collapse>
+                    <Nav>
+                        <Nav.Link href="#pricing" style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }}><FontAwesomeIcon icon="sign-out-alt" size="lg"/></Nav.Link>
+                    </Nav>
+                </Navbar>
+
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: 20,
+                    padding: 0,
+                }}>
+                    <Fab aria-label="Add" style={{backgroundColor: this.state.color, color: 'white'}}>
+                        <AddIcon/>
+                    </Fab>
+                </div>
+
+
+                <Carousel controls={false} indicators={false} activeIndex={this.state.index}>
+                    <Carousel.Item>
+                        <Row style={{
+                            maxWidth: '100%', margin: 0,
+                            padding: 0,
+                        }}>
+                            <Col xs={0} sm={2} md={2} style={{
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                            }}><FontAwesomeIcon icon="sign-out-alt" size="lg"/></Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Navbar>
+                                margin: 0,
+                                padding: 0,
+                            }}>
+                                <div onClick={this.toggle} className="d-none d-sm-block"><FontAwesomeIcon
+                                    icon="chevron-left"
+                                    size="5x"
+                                    color={this.state.opositColor}/>
+                                </div>
+                            </Col>
+                            <Col xs={12} sm={8} md={8} style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                margin: 0,
+                                padding: 0,
+                            }}><Accordion style={{
+                                width: '100%',
+                                margin: 10,
+                            }}>
+                                <Item id={1}/>
+                                <Item id={2}/>
+                                <Item id={3}/>
+                            </Accordion>
+                            </Col>
+                            <Col xs={0} sm={2} md={2} style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                margin: 0,
+                                padding: 0,
+                            }}>
+                                <div onClick={this.toggle} className="d-none d-sm-block"><FontAwesomeIcon
+                                    icon="chevron-right"
+                                    size="5x"
+                                    color={this.state.opositColor}/>
+                                </div>
+                            </Col>
+                        </Row>
+
+                        {this.state.applicationTile}
+                    </Carousel.Item>
 
 
-                <Row style={{minHeight: 300, maxWidth: '100%', margin: 0,
-                    padding: 0,}}>
-                    <Col xs={0} sm={2} md={2} style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        margin: 0,
-                        padding: 0,
-                    }}>
-                        <div onClick={this.toggle} className="d-none d-sm-block" ><FontAwesomeIcon icon="chevron-left" size="5x"
-                                                                    color={this.state.opositColor}/></div>
-                    </Col>
-                    <Col xs={12} sm={8} md={8} style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        margin: 0,
-                        padding: 0,
-                    }}><Accordion style={{
-                        width: '100%',
-                        margin: 10,
-                    }}>
-                        <Item id={1}/>
-                        <Item id={2}/>
-                    </Accordion>
-                    </Col>
-                    <Col xs={0} sm={2} md={2} style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        margin: 0,
-                        padding: 0,
-                    }}>
-                        <div onClick={this.toggle} className="d-none d-sm-block"><FontAwesomeIcon icon="chevron-right" size="5x"
-                                                                    color={this.state.opositColor}/></div>
-                    </Col>
-                </Row>
+                    <Carousel.Item>
+                        <Row style={{
+                            minHeight: 200, maxWidth: '100%', margin: 0,
+                            padding: 0,
+                        }}>
+                            <Col xs={0} sm={2} md={2} style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                margin: 0,
+                                padding: 0,
+                            }}>
+                                <div onClick={this.toggle} className="d-none d-sm-block"><FontAwesomeIcon
+                                    icon="chevron-left"
+                                    size="5x"
+                                    color={this.state.opositColor}/>
+                                </div>
+                            </Col>
+                            <Col xs={12} sm={8} md={8} style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                margin: 0,
+                                padding: 0,
+                            }}><Accordion style={{
+                                width: '100%',
+                                margin: 10,
+                            }}>
+                                <Item id={1}/>
+                                <Item id={2}/>
+                            </Accordion>
+                            </Col>
+                            <Col xs={0} sm={2} md={2} style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                margin: 0,
+                                padding: 0,
+                            }}>
+                                <div onClick={this.toggle} className="d-none d-sm-block"><FontAwesomeIcon
+                                    icon="chevron-right"
+                                    size="5x"
+                                    color={this.state.opositColor}/>
+                                </div>
+                            </Col>
+                        </Row>
 
-                {this.state.applicationTile}
+                        {this.state.applicationTile}
+                    </Carousel.Item>
+                </Carousel>
             </div>
         );
     }

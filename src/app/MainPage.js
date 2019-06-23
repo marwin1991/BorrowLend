@@ -9,6 +9,8 @@ import Button from "react-bootstrap/es/Button";
 import Container from "react-bootstrap/es/Container";
 import Row from "react-bootstrap/es/Row";
 import Col from "react-bootstrap/es/Col";
+import Item from "./Item";
+import Accordion from "react-bootstrap/es/Accordion";
 
 
 class MainPage extends React.Component {
@@ -46,8 +48,8 @@ class MainPage extends React.Component {
         this.forceUpdate()
     }
 
-    toggle(){
-        if(this.state.mode === "borrow")
+    toggle() {
+        if (this.state.mode === "borrow")
             this.lendButton();
         else
             this.borrowButton();
@@ -102,23 +104,42 @@ class MainPage extends React.Component {
                 </Navbar>
 
 
-                <Row style={{maxWidth: '100%', minHeight:300}}>
-                    <Col style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    }}><div onClick={this.toggle}><FontAwesomeIcon icon="chevron-left" size="6x" color={this.state.opositColor}/></div></Col>
-                    <Col xs={6} style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    }}>2 of 3 (wider)</Col>
-                    <Col style={{
+                <Row style={{minHeight: 300, maxWidth: '100%', margin: 0,
+                    padding: 0,}}>
+                    <Col xs={0} sm={2} md={2} style={{
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         margin: 0,
-                    }}><div onClick={this.toggle}><FontAwesomeIcon icon="chevron-right" size="6x" color={this.state.opositColor}/></div></Col>
+                        padding: 0,
+                    }}>
+                        <div onClick={this.toggle} className="d-none d-sm-block" ><FontAwesomeIcon icon="chevron-left" size="5x"
+                                                                    color={this.state.opositColor}/></div>
+                    </Col>
+                    <Col xs={12} sm={8} md={8} style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        margin: 0,
+                        padding: 0,
+                    }}><Accordion style={{
+                        width: '100%',
+                        margin: 10,
+                    }}>
+                        <Item id={1}/>
+                        <Item id={2}/>
+                    </Accordion>
+                    </Col>
+                    <Col xs={0} sm={2} md={2} style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        margin: 0,
+                        padding: 0,
+                    }}>
+                        <div onClick={this.toggle} className="d-none d-sm-block"><FontAwesomeIcon icon="chevron-right" size="5x"
+                                                                    color={this.state.opositColor}/></div>
+                    </Col>
                 </Row>
 
                 {this.state.applicationTile}

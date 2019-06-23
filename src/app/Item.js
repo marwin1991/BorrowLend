@@ -1,8 +1,9 @@
 import React from "react";
+import Accordion from "react-bootstrap/es/Accordion";
+import Card from "react-bootstrap/es/Card";
 
 class Item extends React.Component {
     state = {
-        applicationTile: "BorrowLend",
         mode: "borrow", //borrow,lend
         styleMode: "success", // borrow=success lend=danger
         color: "#28a745", // borrow = #28a745 lend = #dc3545
@@ -15,7 +16,19 @@ class Item extends React.Component {
 
     render() {
         return (
-            <div></div>
+            <Card style={{
+                width: '100%',
+                borderColor: this.state.color,
+                borderWidth: 3,
+            }}>
+                <Accordion.Toggle as={Card.Header} eventKey={this.props.id}>
+                    Click me!
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey={this.props.id}>
+                    <Card.Body>Hello! I'm another body</Card.Body>
+                </Accordion.Collapse>
+            </Card>
+
         )
     }
 }

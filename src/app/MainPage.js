@@ -104,7 +104,7 @@ class MainPage extends React.Component {
                         </Nav>
                     </Navbar.Collapse>
                     <Nav>
-                        <Nav.Link href="/login " style={{
+                        <Nav.Link href="#pricing" style={{
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
